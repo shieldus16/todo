@@ -1,0 +1,12 @@
+{
+	"folders": [
+		{
+			"path": ".."
+		},
+		{
+			"name": "shieldus_module",
+			"path": "../shieldus_module"
+		}
+	],
+	"settings": {}
+}

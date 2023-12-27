@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SIGN UP</title>
+</head>
+<body>
+    <form action="/signup/" method="POST">
+        {% csrf_token %}
+        회원가입<br>
+        <input type="text" name = "id" value="" placeholder="아이디"><br>
+        <input type="password" name = "password" value="" placeholder="비밀번호"><br>
+        <input type="text" name = "name" value="" placeholder="이름"><br>
+        <input type="submit" value="회원가입">
+    </form>
+    {% if error_message %}
+        <p>{{ error_message }}</p>
+    {% endif %}
+
+</body>
+</html>
