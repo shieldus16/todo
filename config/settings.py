@@ -49,20 +49,52 @@ MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
+    'django.middleware.clickjacking.XFrameOptionsMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
-    'django.middleware.clickjacking.XFrameOptionsMiddleware',
 ]
 
 CORS_ORIGIN_WHITELIST = (
     'http://127.0.0.1:8000', 
-    'http://localhost:3000')
+    'http://localhost:3000',
+)
+
 CORS_ALLOW_CREDENTIALS = True
+CORS_ORIGIN_ALLOW_ALL = True
+
 ROOT_URLCONF = 'config.urls'
+
 CORS_ALLOW_HEADERS = [
-    'Content-Type', 'Timezone-Offset' 
+    'Timezone-Offset',
+    'access-control-allow-credentials',
+    'access-control-allow-origin',
+    'access-control-request-method',
+    'access-control-request-headers',
+    'accept',
+    'accept-encoding',
+    'accept-language',
+    'authorization',
+    'connection',
+    'content-type',
+    'dnt',
+    'credentials',
+    'host',
+    'origin',
+    'user-agent',
+    'X-CSRFToken',
+    'csrftoken',
+    'x-requested-with',
 ]
+#  추가
+CSRF_COOKIE_SECURE = True
+CSRF_COOKIE_HTTPONLY = True
+X_FRAME_OPTIONS = 'DENY'
+CSRF_TRUSTED_ORIGINS = (
+    'http://127.0.0.1:8000', 
+    'http://localhost:3000',
+)
+
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
@@ -74,6 +106,7 @@ TEMPLATES = [
                 'django.template.context_processors.request',
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
+                'django.template.context_processors.csrf',
             ],
         },
     },
